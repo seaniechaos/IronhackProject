@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The Mortgage Monitor</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,800' rel='stylesheet' type='text/css'>
+    
+    <script src="javascript/jquery-1.11.2.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>The Mortgage Monitor</h1>
+
+    <form action="index.html" method="post">
+
+      <fieldset>
+
+        <legend>Enter your mortgage details here:</legend>
+
+          <label for "ask_price">Asking price of house:</label>
+          <input type="number" id="ask_price" name="ask_price" value=""><br>
+          
+          <label for "down_payment">Down payment:</label><br>
+          <input type="radio" name="down_payment" id="down_payment" value="$ Amount"checked> $ Amount<br>
+          <input type="radio" name="down_payment" id="down_payment" value="% Amount"> % Amount<br>
+          <input type="number" name="dp_submitted" id="dp_submitted" value=""><br>
+          
+          <label for "principal">Principal:</label>
+          <input type="number" id="principal" name="principal" value=""><br>
+          
+          <label for "interest_rate">Interest rate (annual):</label>
+          <input type="number" id="interest_rate" name="interest_rate" value=""><br>
+          
+          <label for "years">Length of mortgage (in years):</label>
+          <input type="number" id="years" name="years" min=1 max=30 value=""><br>
+          
+          <label for "frequency">Payment Frequency:</label><br>
+          <input type="radio" name="frequency" value="Annual"> Annual<br>
+          <input type="radio" name="frequency" value="Semi-annual"> Semi-annual<br>
+          <input type="radio" name="frequency" value="Quarterly"> Quarterly<br>
+          <input type="radio" name="frequency" value="Monthly" checked> Monthly<br>
+
+      </fieldset>
+
+      <button type="submit" id="submit">Submit</button>
+      
+
+        
+    
+    </form>  
+
+    <p>Your monthly payment is:</p>
+    <div id="payments">
+    </div>
+
+    <script src="javascript/finance.js"></script>
+    <script src="javascript/javascript.js"></script>
+  </body>
+
+</html>
