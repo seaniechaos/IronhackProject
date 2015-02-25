@@ -6,7 +6,7 @@ var MortgageCalculator = function () {
   this.years;
   this.monthlyPayment;
   this.currentOpeningBalance;
-  this.month = 0;
+  this.month = 1;
   this.numberMonths;
   this.addListener();
 
@@ -19,7 +19,7 @@ MortgageCalculator.prototype.getInputData = function (event) {
   this.interestRateAnnual   = document.getElementById("interest_rate").value
   this.years                = document.getElementById("years").value;
   this.numberMonths         = this.years * 12;
-  this.principal            = document.getElementById("principal").value;
+  this.principal            = this.askPrice - this.downPayment;
   this.calculation();
 };
 
@@ -34,7 +34,7 @@ MortgageCalculator.prototype.calculation = function () {
   this.principalReduction = Math.round((this.monthlyPayment - this.interestComponent) * 100) / 100;
   this.closingBalance = Math.round((this.openingBalance - this.principalReduction) * 100) / 100;
   this.renderPayment();
-  // this.renderRow();
+  this.renderRow();
   this.iterateUntilFinished();
 };
 
@@ -67,5 +67,15 @@ MortgageCalculator.prototype.iterateUntilFinished = function () {
     this.iterateUntilFinished();
   }
 };
+
+var principalCalculation = function () {
+  var askPrice             = document.getElementById("ask_price").value;
+  var downPayment          = document.getElementById("dp_submitted").value;
+  document.getElementById("principal").value = askPrice - downPayment;
+}
+
+document.getElementById("ask_price").addEventListener("change", principalCalculation);
+document.getElementById("dp_submitted").addEventListener("change", principalCalculation);
+
 
 var calculator = new MortgageCalculator();
