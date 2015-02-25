@@ -6,7 +6,8 @@ var MortgageCalculator = function () {
   this.years;
   this.monthlyPayment;
   this.currentOpeningBalance;
-  this.month = 1;
+  this.month = 0;
+  this.numberMonths;
   this.addListener();
 
 };
@@ -17,6 +18,7 @@ MortgageCalculator.prototype.getInputData = function (event) {
   this.downPayment          = document.getElementById("dp_submitted").value;
   this.interestRateAnnual   = document.getElementById("interest_rate").value
   this.years                = document.getElementById("years").value;
+  this.numberMonths         = this.years * 12;
   this.principal            = document.getElementById("principal").value;
   this.calculation();
 };
@@ -26,27 +28,19 @@ MortgageCalculator.prototype.addListener = function () {
 };
 
 MortgageCalculator.prototype.calculation = function () {
-  this.monthlyPayment = finance.calculatePayment(this.principal, this.years * 12, this.interestRateAnnual);
+  this.monthlyPayment = finance.calculatePayment(this.principal, this.numberMonths, this.interestRateAnnual);
   this.openingBalance = Math.round(this.principal * 100) / 100;
   this.interestComponent = Math.round(this.openingBalance * this.interestRateAnnual / 12 / 100 * 100) / 100;
-  this.principalReduction = this.monthlyPayment - this.interestComponent;
-  this.closingBalance = this.openingBalance - this.principalReduction;
+  this.principalReduction = Math.round((this.monthlyPayment - this.interestComponent) * 100) / 100;
+  this.closingBalance = Math.round((this.openingBalance - this.principalReduction) * 100) / 100;
   this.renderPayment();
-  this.renderRow();
+  // this.renderRow();
+  this.iterateUntilFinished();
 };
 
 MortgageCalculator.prototype.renderPayment = function () {
   paymentElement = $("<p>").html(this.monthlyPayment);
   $("#payments").append(paymentElement);
-};
-
-MortgageCalculator.prototype.iterateUntilFinished = function () {
-  // update openingBalance
-  // update interestComponent
-  // principalReduction = monthlyPayment - interestComponent
-  // update closingBalance
-  // update this.month
-  // call renderRow
 };
 
 MortgageCalculator.prototype.renderRow = function () {
@@ -59,6 +53,19 @@ MortgageCalculator.prototype.renderRow = function () {
   var $closingBal         = $("<td>").html(this.closingBalance);
   $row.append($monthData).append($openingData).append($paymentData).append($interestPart).append($principalRed).append($closingBal);
   $("#payments-table").append($row);
+};
+
+MortgageCalculator.prototype.iterateUntilFinished = function () {
+  this.month = this.month + 1;
+  this.openingBalance = Math.round(this.closingBalance * 100) / 100;
+  this.interestComponent = Math.round(this.openingBalance * this.interestRateAnnual / 12 / 100 * 100) / 100; 
+  this.principalReduction = Math.round((this.monthlyPayment - this.interestComponent) * 100) / 100;
+  this.closingBalance = Math.round((this.openingBalance - this.principalReduction) * 100) / 100;
+  this.renderRow();
+
+  if (this.month < this.numberMonths) {
+    this.iterateUntilFinished();
+  }
 };
 
 var calculator = new MortgageCalculator();
