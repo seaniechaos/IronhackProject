@@ -28,9 +28,9 @@ MortgageCalculator.prototype.addListener = function () {
 };
 
 MortgageCalculator.prototype.calculation = function () {
-  this.monthlyPayment = finance.calculatePayment(this.principal, this.numberMonths, this.interestRateAnnual);
-  this.openingBalance = Math.round(this.principal * 100) / 100;
-  this.interestComponent = Math.round(this.openingBalance * this.interestRateAnnual / 12 / 100 * 100) / 100;
+  this.monthlyPayment = Math.round((finance.calculatePayment(this.principal, this.numberMonths, this.interestRateAnnual) * 100)) / 100;
+  this.openingBalance = Math.round((this.principal) * 100) / 100;
+  this.interestComponent = Math.round(this.openingBalance * (this.interestRateAnnual / 100 / 12) * 100) / 100;
   this.principalReduction = Math.round((this.monthlyPayment - this.interestComponent) * 100) / 100;
   this.closingBalance = Math.round((this.openingBalance - this.principalReduction) * 100) / 100;
   this.renderPayment();
@@ -46,21 +46,21 @@ MortgageCalculator.prototype.renderPayment = function () {
 MortgageCalculator.prototype.renderRow = function () {
   var $row                = $("<tr>");
   var $monthData          = $("<td>").html(this.month);
-  var $openingData        = $("<td>").html(this.openingBalance);
-  var $paymentData        = $("<td>").html(this.monthlyPayment)
-  var $interestPart       = $("<td>").html(this.interestComponent);
-  var $principalRed       = $("<td>").html(this.principalReduction);
-  var $closingBal         = $("<td>").html(this.closingBalance);
+  var $openingData        = $("<td>").html(Math.round(this.openingBalance * 100) / 100);
+  var $paymentData        = $("<td>").html(Math.round(this.monthlyPayment * 100) / 100);
+  var $interestPart       = $("<td>").html(Math.round(this.interestComponent * 100) / 100);
+  var $principalRed       = $("<td>").html(Math.round(this.principalReduction * 100) / 100);
+  var $closingBal         = $("<td>").html(Math.round(this.closingBalance * 100) / 100);
   $row.append($monthData).append($openingData).append($paymentData).append($interestPart).append($principalRed).append($closingBal);
   $("#payments-table").append($row);
 };
 
 MortgageCalculator.prototype.iterateUntilFinished = function () {
   this.month = this.month + 1;
-  this.openingBalance = Math.round(this.closingBalance * 100) / 100;
-  this.interestComponent = Math.round(this.openingBalance * this.interestRateAnnual / 12 / 100 * 100) / 100; 
-  this.principalReduction = Math.round((this.monthlyPayment - this.interestComponent) * 100) / 100;
-  this.closingBalance = Math.round((this.openingBalance - this.principalReduction) * 100) / 100;
+  this.openingBalance = this.closingBalance;
+  this.interestComponent = this.openingBalance * (this.interestRateAnnual / 100 / 12); 
+  this.principalReduction = this.monthlyPayment - this.interestComponent;
+  this.closingBalance = this.openingBalance - this.principalReduction;
   this.renderRow();
 
   if (this.month < this.numberMonths) {
