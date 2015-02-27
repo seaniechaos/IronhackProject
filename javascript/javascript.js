@@ -28,11 +28,11 @@ MortgageCalculator.prototype.addListener = function () {
 };
 
 MortgageCalculator.prototype.calculation = function () {
-  this.monthlyPayment = Math.round((finance.calculatePayment(this.principal, this.numberMonths, this.interestRateAnnual) * 100)) / 100;
-  this.openingBalance = Math.round((this.principal) * 100) / 100;
-  this.interestComponent = Math.round(this.openingBalance * (this.interestRateAnnual / 100 / 12) * 100) / 100;
-  this.principalReduction = Math.round((this.monthlyPayment - this.interestComponent) * 100) / 100;
-  this.closingBalance = Math.round((this.openingBalance - this.principalReduction) * 100) / 100;
+  this.monthlyPayment = finance.calculatePayment(this.principal, this.numberMonths, this.interestRateAnnual);
+  this.openingBalance = this.principal;
+  this.interestComponent = this.openingBalance * (this.interestRateAnnual / 100 / 12);
+  this.principalReduction = this.monthlyPayment - this.interestComponent;
+  this.closingBalance = this.openingBalance - this.principalReduction;
   this.renderPayment();
   this.renderRow();
   this.iterateUntilFinished();

@@ -9,3 +9,7 @@ footer {
 form {
   max-width: 25%;
 }
+
+#map{
+  margin-top: 20px;
+}
