@@ -1,5 +1,9 @@
+th {
+  text-align: center;
+}
+
 td {
-  text-align: right;
+  text-align: center;
 }
 
 footer {
@@ -7,9 +11,48 @@ footer {
 }
 
 form {
-  max-width: 25%;
+  max-width: 100%;
 }
 
 #map{
   margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+
+h1{
+  text-align: center;
+}
+
+h3{
+  text-align: center;
+}
+
+body{
+  background-color: #f9f9f9;
+}
+
+/*-----FOOTER------*/
+
+footer {
+  font-size: 1em;
+  text-align: center;
+  clear: both;
+  padding: 10px;
+  color: #999;
+}
+  
+.social-icon {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+.social-icon:hover{
+  -moz-transition:-moz-transform 0.5s ease-in; 
+  -webkit-transition:-webkit-transform 0.5s ease-in; 
+  -o-transition:-o-transform 0.5s ease-in;
+  -moz-transform:scale(1.5); 
+  -webkit-transform:scale(1.5);
+  -o-transform:scale(1.5);
 }
