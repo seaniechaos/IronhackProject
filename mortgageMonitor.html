@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Ring's Data</title>
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,800' rel='stylesheet' type='text/css'>
+    
+    <script src="javascript/jquery-1.11.2.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Ring's Data</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="mortgageMonitor.html">Mortgage Monitor</a></li>
+            <li><a href="worldEconomicData.html">World Economic Data</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container">
+      <h1>The Mortgage Monitor</h1>
+          
+          <legend>Enter your mortgage details here:</legend>
+
+            <div class="row">
+              <div class="col-sm-6">
+
+              <form action="index.html" method="post">
+              
+                <label for "ask_price">Asking price of house:</label>
+                <input type="number" class="form-control" id="ask_price" name="ask_price" value="" placeholder="$300,000"><br>
+              
+                <label for "down_payment">Down payment:</label>
+                <input type="number" class="form-control" name="dp_submitted" id="dp_submitted" value="" placeholder="$50,000"><br>
+
+                <label for "principal">Principal:</label>
+                <input type="number" class="form-control" id="principal" name="principal" readonly><br>
+
+                <label for "interest_rate">Interest rate (annual):</label>
+                <input type="number" class="form-control" id="interest_rate" name="interest_rate" placeholder="5%" value=""><br>
+
+                <label for "years">Length of mortgage (in years):</label>
+                <input type="number" class="form-control" id="years" name="years" min=1 max=30 value="" placeholder="20"><br>
+       
+                <button type="submit" id="submit">Submit</button>
+          
+              </form>
+            
+
+                <div id="payment_container">
+                  <h3>Your monthly payment is:</h3>
+                  <div id="payments">
+                    
+                  </div>
+                </div>
+            </div>
+        
+        <div class="col-sm-6">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="payments-table">
+             <thead>
+                <tr>
+                  <th class="text-center">Month</th>
+                  <th class="text-center">Opening Balance</th> 
+                  <th class="text-center">Monthly Payment</th>
+                  <th class="text-center">Interest Component</th>
+                  <th class="text-center">Principal Reduction</th>
+                  <th class="text-center">Closing Balance</th>
+                </tr>
+             </thead>
+             <tbody>
+               
+             </tbody>
+            </table>
+          </div>
+        </div>
+
+        <footer>
+          <a href="http://twitter.com/seanring"><img src="img/twitter21.png" alt="Twitter Logo" class="social-icon"></a>
+          <a href="http://facebook.com/sean.ring"><img src="img/facebook29.png" alt="Facebook Logo" class="social-icon"></a>
+          <p>&copy; 2015 Sean Ring.</p>
+        </footer>
+
+    
+    </div class="container">
+    
+    <script src="javascript/finance.js"></script>
+    <script src="javascript/javascript.js"></script>
+  
+  </body>
+
+</html>

@@ -1,6 +1,4 @@
 
-var dropdown = document.getElementById("dropdown");
-
 function numberWithCommas(x) {
   var x = Math.round(x * 100)/100
   var parts = x.toString().split(".");
@@ -61,7 +59,7 @@ function printdebt2gdp(data){
 
 function printtotalpop(data){
   if(data.length < 2) return;
-  
+
   var printtotalpop = data[1][0];
   $("#TPOPs").text(numberWithCommas(printtotalpop.value / 1000000) + " million");
   $("#TPOPy").html(printtotalpop.date);
@@ -91,14 +89,22 @@ function getData(country) {
  });
 }
 
-dropdown.addEventListener("change", function(event)
-  {
-      updateMap(this.value);
-      $("#country_placeholder").html(this.value);
-      getData($(this).find("option:selected").attr("id"));
 
 
+function countrySelect(dropdown){
+  updateMap(dropdown.value);
+  $("#country_placeholder").html(dropdown.value);
+  getData($(dropdown).find("option:selected").attr("id"));
+  
+}
+
+var dropdown = document.getElementById("dropdown");
+countrySelect(dropdown);
+
+$(dropdown).on("change", function(event){
+  countrySelect(this);
   });
 
-updateMap(dropdown.value);
-
+$(document).ready(function() {
+  $(".js-example-basic-single").select2();
+});

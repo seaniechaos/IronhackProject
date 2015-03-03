@@ -14,6 +14,10 @@ var MortgageCalculator = function () {
 
 MortgageCalculator.prototype.getInputData = function (event) {
   event.preventDefault();
+
+  $("#payments-table tbody tr").remove();
+  this.month = 1;
+
   this.askPrice             = document.getElementById("ask_price").value;
   this.downPayment          = document.getElementById("dp_submitted").value;
   this.interestRateAnnual   = document.getElementById("interest_rate").value
@@ -39,21 +43,28 @@ MortgageCalculator.prototype.calculation = function () {
 };
 
 MortgageCalculator.prototype.renderPayment = function () {
-  paymentElement = $("<p>").html(this.monthlyPayment);
-  $("#payments").append(paymentElement);
+  paymentElement = $("<p class='usd'>").html(this.numberWithCommas(this.monthlyPayment));
+  $("#payments").html(paymentElement);
 };
 
 MortgageCalculator.prototype.renderRow = function () {
-  var $row                = $("<tr>");
-  var $monthData          = $("<td>").html(this.month);
-  var $openingData        = $("<td>").html(Math.round(this.openingBalance * 100) / 100);
-  var $paymentData        = $("<td>").html(Math.round(this.monthlyPayment * 100) / 100);
-  var $interestPart       = $("<td>").html(Math.round(this.interestComponent * 100) / 100);
-  var $principalRed       = $("<td>").html(Math.round(this.principalReduction * 100) / 100);
-  var $closingBal         = $("<td>").html(Math.round(this.closingBalance * 100) / 100);
+  var $row          = $("<tr>");
+  var $monthData    = $("<td>").html(this.month);
+  var $openingData  = $("<td class='usd'>").html(this.numberWithCommas(this.openingBalance)); 
+  var $paymentData  = $("<td class='usd'>").html(this.numberWithCommas(this.monthlyPayment));
+  var $interestPart = $("<td class='usd'>").html(this.numberWithCommas(this.interestComponent));
+  var $principalRed = $("<td class='usd'>").html(this.numberWithCommas(this.principalReduction));
+  var $closingBal   = $("<td class='usd'>").html(this.numberWithCommas(this.closingBalance));
   $row.append($monthData).append($openingData).append($paymentData).append($interestPart).append($principalRed).append($closingBal);
-  $("#payments-table").append($row);
+  $("#payments-table tbody").append($row);
 };
+
+MortgageCalculator.prototype.numberWithCommas = function(x) {
+  var x = Math.round(x * 100)/100
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+}
 
 MortgageCalculator.prototype.iterateUntilFinished = function () {
   this.month = this.month + 1;

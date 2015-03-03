@@ -20,7 +20,7 @@ form {
   max-width: 100%;
 }
 
-h1{
+h1, h2, #dropdown_container{
   text-align: center;
 }
 
@@ -29,6 +29,7 @@ h3{
 }
 
 body{
+  padding-top: 50px;
   background-color: #f9f9f9;
 }
 
@@ -55,4 +56,17 @@ footer {
   -moz-transform:scale(1.5); 
   -webkit-transform:scale(1.5);
   -o-transform:scale(1.5);
+}
+
+.usd::before {
+  content: '$';
+}
+
+.jumbotron{
+  margin-top: 20px;
+}
+
+#payment_container{
+  font-size: 2em;
+  text-align: center;
 }
