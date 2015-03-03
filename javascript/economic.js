@@ -29,7 +29,7 @@ function printgdp(data){
   if(data.length < 2) return;
 
   var printgdp = data[1][0];
-  $("#GDPs").text("$" + numberWithCommas(printgdp.value / 1000000000) + " billion");
+  $("#GDPs").text("$" + numberWithCommas(printgdp.value / 1000000000) + " B");
   $("#GDPy").html(printgdp.date);
 }
 
@@ -61,7 +61,7 @@ function printtotalpop(data){
   if(data.length < 2) return;
 
   var printtotalpop = data[1][0];
-  $("#TPOPs").text(numberWithCommas(printtotalpop.value / 1000000) + " million");
+  $("#TPOPs").text(numberWithCommas(printtotalpop.value / 1000000) + " M");
   $("#TPOPy").html(printtotalpop.date);
 }
 
