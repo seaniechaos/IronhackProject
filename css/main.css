@@ -19,6 +19,7 @@ form {
   margin-bottom: 20px;
   max-width: 100%;
   pointer-events: none;
+  touch-action: none;
 }
 
 h1, h2, #dropdown_container{
