@@ -24,7 +24,14 @@ MortgageCalculator.prototype.getInputData = function (event) {
   this.years                = document.getElementById("years").value;
   this.numberMonths         = this.years * 12;
   this.principal            = this.askPrice - this.downPayment;
-  this.calculation();
+
+  if(this.askPrice == "" || this.interestRateAnnual == "" || this.years == ""){
+    if(this.askPrice == "") $("#ask_price").parent().addClass("has-error");
+    if(this.interestRateAnnual == "") $("#interest_rate").parent().addClass("has-error");
+    if(this.numberMonths == "") $("#years").parent().addClass("has-error");
+  } else {
+    this.calculation();
+  }
 };
 
 MortgageCalculator.prototype.addListener = function () {
