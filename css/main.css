@@ -3,7 +3,7 @@ th {
 }
 
 td {
-  text-align: center;
+  text-align: right;
 }
 
 footer {
@@ -37,11 +37,30 @@ body{
 
 #submit-button {
   text-align: center;
+  margin-bottom: 10px;
 }
 
 #World-Bank{
   text-align: center;
 }
+
+#add_event{
+  margin-bottom: 20px;
+}
+
+/*-----Risk Page-----*/
+
+legend{
+  text-align: center;
+}
+
+/*div.data-container, div.data-container-bis {
+  display: none;
+}
+
+div.display-container {
+  display: block;
+}*/
 
 /*-----FOOTER------*/
 

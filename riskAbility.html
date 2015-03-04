@@ -41,13 +41,213 @@
     </nav>
 
     <div class="container">
-        <h1>Risk Ability</h1>
-        <h2>Client Balance Sheet</h2>
+        <h1 id="top">Risk Ability</h1>
 
-        <div id="assets">
+            <legend>Let's get a better look at your financial situation:</legend>
+
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+
+                <form action="riskAbility.html" method="post">
+
+                  <label for "future_plans">What are your future plans?</label>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">$</span>
+                      <input type="number" class="form-control" id="future_plan_price" name="future_plan_price" value="" placeholder="240 000">
+                      <span class="input-group-addon">.00</span>
+                    </div>
+                  </div>
+
+                  <label for "time_horizon">What is your time horizon (in years)?</label>
+                  <div class="form-group">
+                    <div class="input-group">
+                    <input type="number" class="form-control" id="time_horizon" name="time_horizon" value="" placeholder="15">
+                    <span class="input-group-addon" id="basic-addon2">years</span>
+                    </div>  
+                  </div>
+
+                  <label for "cash">How much cash and cash equivalents do you have?</label>
+                  <div class="form-group">
+                    <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                      <input type="number" class="form-control" name="cash_price" id="cash_price" value="" placeholder="1 000 000">
+                    <span class="input-group-addon">.00</span>
+                    </div>
+                  </div>
+
+                  <label for "other_assets">What do you estimate your non-liquid assets are worth?</label>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">$</span>
+                        <input type="number" class="form-control" id="non_liquid_price" name="non_liquid_price" placeholder="12 500 000">
+                      <span class="input-group-addon">.00</span>
+                    </div>
+                  </div>
+
+                  <label for "retirement_coverage">How much of your free cash will you use for retirement, once you get there?</label>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="number" class="form-control" id="retirement_coverage" name="retirement_coverage" value="" placeholder="100">
+                      <span class="input-group-addon" id="basic-addon2">%</span>
+                    </div>
+                  </div>
+
+                  <label for "annual_income">Currently, what is your annual income?</label>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                          <input type="number" class="form-control" id="annual_income" name="annual_income" placeholder="500 000" value="">
+                        <span class="input-group-addon">.00</span>
+                      </div>
+                    </div>
+
+                  <label for "annual_spending">Currently, what is your annual spending?</label>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                          <input type="number" class="form-control" id="annual_spending" name="annual_spending" value="" placeholder="200 000">
+                         <span class="input-group-addon">.00</span>
+                      </div>
+                    </div>
+         
+                  <div id="submit-button">
+                    <span id="client_balance_sheet"></span>
+                    <button type="submit" id="submit" class="btn btn-default">Show Me The Financial Statements</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="row" id="data-container">
+            <h2>Client Balance Sheet</h2>
+              <div class="col-sm-6">
+                <div class="table-responsive">
+                  <h3 id="assets">Assets</h3>
+                    <table class="table table-hover">
+                        <th>Assets</th>
+                        <tr>
+                          <td>Dedicated Assets</td>
+                          <td id="dedicated_assets"></td>
+                        </tr>
+                        <tr>
+                          <td>Total Free Assets</td>
+                          <td id="free_assets"></td>
+                        </tr>
+                        <tr>
+                          <td>Total Investible Assets</td>
+                          <td id="investible_assets"></td>
+                        </tr>
+                        <tr>
+                          <td>Other Assets</td>
+                          <td id="other_assets"></td>
+                        </tr>
+                        <tr>
+                          <th>Total Assets</th>
+                          <td id="total_assets"></td>
+                          
+                        </tr>
+                    </table>
+                  </div>
+                </div><!--col-1 CLOSE -->
+
             
-        </div>
+              <div class="col-sm-6">
+                <div class="table-responsive">
+                  <h3 id="liabilities_equity">Liabilities and Net Worth</h3>
+                  <table class="table table-hover">
+                      <th>Liabilities</th>
+                      <tr>
+                        <td>Plans, Commitments, and Liabilities</td>
+                        <td id="pcl"></td>
+                      </tr>
+                      <tr>
+                        <td>Total PCL</td>
+                        <td id="total_pcl"></td>
+                      </tr>
+                      <tr>
+                        <th>Net Worth</th>
+                        <td id=""></td>
+                      </tr>
+                      <tr>
+                        <td>Net Worth</td>
+                        <td id="net_worth"></td>
+                      </tr>
+                      <tr>
+                        <th>Total PCL and Net Worth</th>
+                        <td id="total_pcl_and_net_worth"></td>
+                      </tr>
+                  </table>
+                </div>
+              </div><!--col-7 CLOSE -->
+            </div> <!--row CLOSE -->
       
+            <div class="row data-container-bis">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <div class="table-responsive">
+                        <h3 id="income_statement">Income Statement</h3>
+                          <table class="table table-hover">
+                              <tr>
+                                <td>Annual Income</td>
+                                <td id="is_annual_income"></td>
+                              </tr>
+                              <tr>
+                                <td>Annual Spending</td>
+                                <td id="is_annual_spending"></td>      
+                              </tr>
+                              <tr>
+                                <td>Annual Savings</td>
+                                <td id="is_annual_savings"></td>
+                          </table>
+                        </div>
+                        <div id="submit-button">
+                          <a href="#top" type="submit" id="back_to_questions" class="btn btn-default">Go Back To The Risk Questionnaire</a>
+                        </div>
+                        <div id="submit-button">
+                          <a href="#risk_ability" type="submit" class="btn btn-default">Show Me The Risk Ability</a>
+                        </div>
+                      </div><!--col-1 CLOSE -->
+
+                  
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <div class="table-responsive">
+                        <h3 id="risk_ability">Risk Ability</h3>
+                          <table class="table table-hover">
+                              <tr>
+                                <td>Free Assets Ratio</td>
+                                <td id="free_assets_ratio"></td>
+                              </tr>
+                              <tr>
+                                <td>Time Horizon</td>
+                                <td id="rs_time_horizon"></td>
+                              </tr>
+                              <tr>
+                                <th>Loss Compensation</th>
+                                <td id="loss_compensation"></td>
+                              </tr>
+                              <tr>
+                                <td>Retirement Coverage</td>
+                                <td id="rs_retirement_coverage"></td>
+                              </tr>
+                              <tr>
+                                <th>Capital Erosion</th>
+                                <td id="capital_erosion"></td>
+                              </tr>
+                              <tr>
+                                <th>Future Liabilities</th>
+                                <td id="future_liabilities"></td>
+                              </tr>
+                          </table>
+                        </div>
+                      <div id="submit-button">
+                        <a href="#client_balance_sheet" type="submit" id="fin_statements" class="btn btn-default">Go Back To The Financial Statements</a>
+                      </div>
+                    </div><!--col-7 CLOSE -->
+                  </div> <!--row CLOSE -->
+                  
+
+
+
         <footer>
           <a href="http://twitter.com/seanring"><img src="img/twitter21.png" alt="Twitter Logo" class="social-icon"></a>
           <a href="http://facebook.com/sean.ring"><img src="img/facebook29.png" alt="Facebook Logo" class="social-icon"></a>
@@ -56,8 +256,7 @@
     
     </div class="container">
     
-    <script src="javascript/finance.js"></script>
-    <script src="javascript/javascript.js"></script>
+    <script src="javascript/risk.js"></script>
   
   </body>
 

@@ -26,10 +26,16 @@ MortgageCalculator.prototype.getInputData = function (event) {
   this.principal            = this.askPrice - this.downPayment;
 
   if(this.askPrice == "" || this.interestRateAnnual == "" || this.years == ""){
-    if(this.askPrice == "") $("#ask_price").parent().addClass("has-error");
-    if(this.interestRateAnnual == "") $("#interest_rate").parent().addClass("has-error");
-    if(this.numberMonths == "") $("#years").parent().addClass("has-error");
+      if(this.askPrice == "") $("#ask_price").parent().addClass("has-error");
+      else $("#ask_price").parent().removeClass("has-error");
+      if(this.interestRateAnnual == "") $("#interest_rate").parent().addClass("has-error");
+      else $("#interest_rate").parent().removeClass("has-error");
+      if(this.years == "") $("#years").parent().addClass("has-error");
+      else $("#years").parent().removeClass("has-error");
   } else {
+    $("#ask_price").parent().removeClass("has-error");
+    $("#interest_rate").parent().removeClass("has-error");
+    $("#years").parent().removeClass("has-error");
     this.calculation();
   }
 };
