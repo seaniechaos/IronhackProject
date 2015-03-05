@@ -37,6 +37,10 @@ MortgageCalculator.prototype.getInputData = function (event) {
     $("#interest_rate").parent().removeClass("has-error");
     $("#years").parent().removeClass("has-error");
     this.calculation();
+    $("#results").css("display", "block");
+    $('html, body').animate({
+      scrollTop: $("#submit-button").offset().top
+    }, 1500);
   }
 };
 
