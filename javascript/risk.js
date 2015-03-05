@@ -21,14 +21,13 @@ var RiskCalculator = function () {
 };
 
 RiskCalculator.prototype.addListener = function () {
-  document.getElementById("submit").addEventListener("click", this.getInputData.bind(this))
+  document.getElementById("submit").addEventListener("click", this.getInputData.bind(this));
+  document.getElementById("back_to_questions").addEventListener("click", this.scrollToTop);
+  document.getElementById("fin_statements").addEventListener("click", this.scrollToClient);
 };
 
 RiskCalculator.prototype.getInputData = function (event) {
   event.preventDefault();
-
-
-  // $("#").remove();
 
   this.futurePlan           = document.getElementById("future_plan_price").value;
   this.timeHorizon          = document.getElementById("time_horizon").value;
@@ -69,9 +68,7 @@ RiskCalculator.prototype.getInputData = function (event) {
       $("#annual_income").parent().removeClass("has-error");
       $("#annual_spending").parent().removeClass("has-error");
       this.calculation();
-      $('html, body').animate({
-        scrollTop: $("#client_balance_sheet").offset().top
-    }, 1500);
+      this.scrollToClient();
   }
 
 };
@@ -121,7 +118,19 @@ RiskCalculator.prototype.render = function() {
   $("#future_liabilities").text(this.numberWithCommas(this.futureLiabilities * 100) + "%");
 }
 
+RiskCalculator.prototype.scrollToTop = function(event) {
+  event.preventDefault();
+  $('html, body').animate({
+      scrollTop: $("#top").offset().top
+    }, 1500);
+}
 
+RiskCalculator.prototype.scrollToClient = function(event) {
+  // event.preventDefault();
+  $('html, body').animate({
+      scrollTop: $("#client_balance_sheet").offset().top
+    }, 1500);
+}
 
 var calculator = new RiskCalculator();
 

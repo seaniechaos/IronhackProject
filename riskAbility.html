@@ -62,8 +62,8 @@
                   <label for "time_horizon">What is your time horizon (in years)?</label>
                   <div class="form-group">
                     <div class="input-group">
-                    <input type="number" class="form-control" id="time_horizon" name="time_horizon" value="" placeholder="15">
-                    <span class="input-group-addon" id="basic-addon2">years</span>
+                      <input type="number" class="form-control" id="time_horizon" name="time_horizon" value="" placeholder="15">
+                      <span class="input-group-addon" id="basic-addon2">years</span>
                     </div>  
                   </div>
 
@@ -121,30 +121,30 @@
 
             <div class="row" id="data-container">
             <h2>Client Balance Sheet</h2>
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <div class="table-responsive">
                   <h3 id="assets">Assets</h3>
                     <table class="table table-hover">
-                        <th>Assets</th>
                         <tr>
-                          <td>Dedicated Assets</td>
+                          <td class="text-left">Dedicated Assets</td>
                           <td id="dedicated_assets"></td>
                         </tr>
                         <tr>
-                          <td>Total Free Assets</td>
+                          <td class="text-left">Total Free Assets</td>
                           <td id="free_assets"></td>
                         </tr>
                         <tr>
-                          <td>Total Investible Assets</td>
-                          <td id="investible_assets"></td>
+                          <th>Total Investible Assets</th>
+                          <td id="investible_assets"><b></b></td>
                         </tr>
                         <tr>
-                          <td>Other Assets</td>
+                          <td class="text-left">Other Assets</td>
                           <td id="other_assets"></td>
                         </tr>
                         <tr>
-                          <th>Total Assets</th>
+                          <th >Total Assets</th>
                           <td id="total_assets"></td>
+                        </tr>
                           
                         </tr>
                     </table>
@@ -152,17 +152,16 @@
                 </div><!--col-1 CLOSE -->
 
             
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <div class="table-responsive">
                   <h3 id="liabilities_equity">Liabilities and Net Worth</h3>
                   <table class="table table-hover">
-                      <th>Liabilities</th>
                       <tr>
-                        <td>Plans, Commitments, and Liabilities</td>
+                        <td class="text-left">Plans, Commitments, and Liabilities</td>
                         <td id="pcl"></td>
                       </tr>
                       <tr>
-                        <td>Total PCL</td>
+                        <th>Total PCL</th>
                         <td id="total_pcl"></td>
                       </tr>
                       <tr>
@@ -170,80 +169,78 @@
                         <td id=""></td>
                       </tr>
                       <tr>
-                        <td>Net Worth</td>
+                        <td class="text-left">Net Worth</td>
                         <td id="net_worth"></td>
                       </tr>
                       <tr>
-                        <th>Total PCL and Net Worth</th>
+                        <th class="text-left">Total PCL and Net Worth</th>
                         <td id="total_pcl_and_net_worth"></td>
                       </tr>
                   </table>
                 </div>
               </div><!--col-7 CLOSE -->
-            </div> <!--row CLOSE -->
       
-            <div class="row data-container-bis">
-                    <div class="col-sm-6 col-sm-offset-3">
+                    <div class="col-sm-4">
                       <div class="table-responsive">
                         <h3 id="income_statement">Income Statement</h3>
                           <table class="table table-hover">
                               <tr>
-                                <td>Annual Income</td>
+                                <td class="text-left">Annual Income</td>
                                 <td id="is_annual_income"></td>
                               </tr>
                               <tr>
-                                <td>Annual Spending</td>
+                                <td class="text-left">Annual Spending</td>
                                 <td id="is_annual_spending"></td>      
                               </tr>
                               <tr>
-                                <td>Annual Savings</td>
+                                <th>Annual Savings</th>
                                 <td id="is_annual_savings"></td>
                           </table>
                         </div>
-                        <div id="submit-button">
-                          <a href="#top" type="submit" id="back_to_questions" class="btn btn-default">Go Back To The Risk Questionnaire</a>
-                        </div>
-                        <div id="submit-button">
-                          <a href="#risk_ability" type="submit" class="btn btn-default">Show Me The Risk Ability</a>
-                        </div>
-                      </div><!--col-1 CLOSE -->
+                    </div>
+            </div> <!--row CLOSE -->
 
+                  <div id="submit-button">
+                    <button type="submit" id="back_to_questions" class="btn btn-default">Go Back To The Risk Questionnaire</button>
+                  </div>
                   
+                  <div class="row data-container-bis">
                     <div class="col-sm-6 col-sm-offset-3">
                       <div class="table-responsive">
                         <h3 id="risk_ability">Risk Ability</h3>
                           <table class="table table-hover">
                               <tr>
-                                <td>Free Assets Ratio</td>
+                                <td class="text-left">Free Assets Ratio</td>
                                 <td id="free_assets_ratio"></td>
                               </tr>
                               <tr>
-                                <td>Time Horizon</td>
+                                <td class="text-left">Time Horizon</td>
                                 <td id="rs_time_horizon"></td>
                               </tr>
                               <tr>
-                                <th>Loss Compensation</th>
+                                <td class="text-left">Loss Compensation</td>
                                 <td id="loss_compensation"></td>
                               </tr>
                               <tr>
-                                <td>Retirement Coverage</td>
+                                <td class="text-left">Retirement Coverage</td>
                                 <td id="rs_retirement_coverage"></td>
                               </tr>
                               <tr>
-                                <th>Capital Erosion</th>
+                                <td class="text-left">Capital Erosion</td>
                                 <td id="capital_erosion"></td>
                               </tr>
                               <tr>
-                                <th>Future Liabilities</th>
+                                <td class="text-left">Future Liabilities</td>
                                 <td id="future_liabilities"></td>
                               </tr>
                           </table>
                         </div>
                       <div id="submit-button">
-                        <a href="#client_balance_sheet" type="submit" id="fin_statements" class="btn btn-default">Go Back To The Financial Statements</a>
+                        <button type="submit" id="fin_statements" class="btn btn-default">Go Back To The Financial Statements</button>
                       </div>
                     </div><!--col-7 CLOSE -->
                   </div> <!--row CLOSE -->
+                </div><!--col-1 CLOSE -->
                   
 
 
